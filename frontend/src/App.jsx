@@ -16,6 +16,7 @@ import AppNavigation from "./components/AppNavigation";
 import MealsPage from "./pages/MealsPage";
 import InsightsPage from "./pages/InsightsPage";
 import GuidePage from "./pages/GuidePage";
+import HomePage from "./pages/HomePage";
 import { useLocation } from "react-router-dom";
 
 const tags = [
@@ -159,6 +160,9 @@ export default function App() {
     } catch (e) {
       setMessage(e.message);
     }
+  }
+  if (location.pathname === "/") {
+    return <><AppNavigation /><HomePage /></>;
   }
   if (location.pathname === "/meals") {
     return <><AppNavigation /><MealsPage /></>;
