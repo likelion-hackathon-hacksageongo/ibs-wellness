@@ -14,6 +14,7 @@ import "./home.css";
 import "./onboarding.css";
 import AppNavigation from "./components/AppNavigation";
 import MealsPage from "./pages/MealsPage";
+import InsightsPage from "./pages/InsightsPage";
 import { useLocation } from "react-router-dom";
 
 const tags = [
@@ -160,6 +161,9 @@ export default function App() {
   }
   if (location.pathname === "/meals") {
     return <><AppNavigation /><MealsPage /></>;
+  }
+  if (location.pathname === "/insights") {
+    return <><AppNavigation /><InsightsPage /></>;
   }
   return (
     <main className="page-shell">
