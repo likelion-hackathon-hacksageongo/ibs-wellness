@@ -23,3 +23,23 @@ class MealRecord(models.Model):
 
     class Meta:
         ordering = ["-meal_time", "-created_at"]
+
+
+class ConditionRecord(models.Model):
+    class ComfortLevel(models.TextChoices):
+        COMFORTABLE = "comfortable", "편안함"
+        SLIGHTLY_UNCOMFORTABLE = "slightly_uncomfortable", "약간 불편함"
+        VERY_UNCOMFORTABLE = "very_uncomfortable", "많이 불편함"
+
+    class SymptomTiming(models.TextChoices):
+        WITHIN_30_MINUTES = "within_30_minutes", "식후 30분 이내"
+        WITHIN_3_HOURS = "within_3_hours", "식후 1~3시간 후"
+        UNKNOWN = "unknown", "잘 모르겠음"
+
+    meal = models.OneToOneField(MealRecord, on_delete=models.CASCADE, related_name="condition")
+    comfort_level = models.CharField(max_length=30, choices=ComfortLevel.choices)
+    symptoms = models.JSONField(default=list, blank=True)
+    symptom_timing = models.CharField(max_length=30, choices=SymptomTiming.choices, blank=True)
+    note = models.TextField(blank=True, max_length=500)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

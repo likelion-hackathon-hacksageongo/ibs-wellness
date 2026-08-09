@@ -10,3 +10,9 @@ export async function createMealRecord(payload) {
   if (!response.ok) { const error = await response.json(); throw new Error(Object.values(error).flat().join(' ') || '식사 기록을 저장하지 못했어요.') }
   return response.json()
 }
+
+export async function saveConditionRecord(mealId, payload) {
+  const response = await fetch(`${API_URL}/meals/${mealId}/condition/`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) })
+  if (!response.ok) throw new Error('식후 상태를 저장하지 못했어요.')
+  return response.json()
+}
