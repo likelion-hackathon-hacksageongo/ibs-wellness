@@ -1,0 +1,54 @@
+.guide-result {
+  border-top: 1px solid #e4e5db;
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+  padding-top: 24px;
+}
+
+.guide-result > h3 {
+  color: #315b3c;
+  font-size: 1.12rem;
+  letter-spacing: -0.035em;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.guide-result .insight-card {
+  background: #f3f8ef;
+  border: 1px solid #dce9d8;
+  border-radius: 14px;
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+}
+
+.guide-result .insight-card strong {
+  color: #284f33;
+  font-size: 1rem;
+}
+
+.guide-result .insight-card p {
+  color: #576b5d;
+  font-size: .9rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.guide-result > p {
+  background: #fff7e9;
+  border-radius: 12px;
+  color: #735a2e;
+  font-size: .9rem;
+  line-height: 1.55;
+  margin: 0;
+  padding: 13px 15px;
+}
+
+.guide-result > p b { color: #805710; }
+
+.guide-result > small {
+  color: #748078;
+  font-size: .78rem;
+  line-height: 1.5;
+}

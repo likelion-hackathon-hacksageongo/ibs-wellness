@@ -22,3 +22,9 @@ export async function getInsights() {
   if (!response.ok) throw new Error('패턴 분석을 불러오지 못했어요.')
   return response.json()
 }
+
+export async function createScheduleGuide(payload) {
+  const response = await fetch(`${API_URL}/guides/`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) })
+  if (!response.ok) throw new Error('식사 가이드를 만들지 못했어요.')
+  return response.json()
+}
