@@ -15,6 +15,7 @@ import "./onboarding.css";
 import AppNavigation from "./components/AppNavigation";
 import MealsPage from "./pages/MealsPage";
 import InsightsPage from "./pages/InsightsPage";
+import GuidePage from "./pages/GuidePage";
 import { useLocation } from "react-router-dom";
 
 const tags = [
@@ -164,6 +165,9 @@ export default function App() {
   }
   if (location.pathname === "/insights") {
     return <><AppNavigation /><InsightsPage /></>;
+  }
+  if (location.pathname === "/guide") {
+    return <><AppNavigation /><GuidePage /></>;
   }
   return (
     <main className="page-shell">
