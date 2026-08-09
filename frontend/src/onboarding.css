@@ -1,0 +1,13 @@
+.onboarding-card {
+  background: #fffefa;
+  border: 1px solid #e4e5db;
+  border-radius: 20px;
+  margin: 0 0 18px;
+  padding: 24px;
+}
+
+.onboarding-card h2 { font-size: 1.15rem; line-height: 1.45; margin: 8px 0 18px; }
+.onboarding-card ol { display: grid; gap: 10px; list-style: none; margin: 0 0 20px; padding: 0; }
+.onboarding-card li { align-items: center; color: #536158; display: flex; font-size: .88rem; gap: 10px; }
+.onboarding-card li span { align-items: center; background: #e5f0df; border-radius: 50%; color: #315b3c; display: inline-flex; font-size: .75rem; font-weight: 800; height: 24px; justify-content: center; width: 24px; }
+.onboarding-cta { background: #315b3c; border-radius: 11px; color: white; display: block; font-size: .9rem; font-weight: 800; padding: 13px; text-align: center; text-decoration: none; }

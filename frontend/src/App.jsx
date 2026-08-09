@@ -9,6 +9,7 @@ import {
 } from "./services/meals";
 import "./guide.css";
 import "./home.css";
+import "./onboarding.css";
 
 const tags = [
   "매운 음식",
@@ -159,6 +160,18 @@ export default function App() {
         <a href="#guide">일정 전 가이드 보기</a>
         <a href="#meal-record">식사 기록하기</a>
       </section>
+      {records.length === 0 && (
+        <section className="onboarding-card" aria-labelledby="onboarding-title">
+          <p className="eyebrow">처음이라면</p>
+          <h2 id="onboarding-title">3번의 기록으로 나만의 경향을 확인해보세요.</h2>
+          <ol>
+            <li><span>1</span> 먹은 메뉴와 양을 짧게 기록해요.</li>
+            <li><span>2</span> 식후 속 상태를 남겨요.</li>
+            <li><span>3</span> 기록에서 관찰된 식사 경향을 확인해요.</li>
+          </ol>
+          <a className="onboarding-cta" href="#meal-record">첫 식사 기록 시작하기</a>
+        </section>
+      )}
       <section className="card" id="guide">
         <div className="section-heading">
           <span>가이드</span>
