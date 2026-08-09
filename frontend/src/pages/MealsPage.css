@@ -1,0 +1,8 @@
+.today-meals { background: #fffefa; border: 1px solid #e4e5db; border-radius: 20px; margin-bottom: 22px; padding: 22px; }
+.today-meals h2 { margin: 0 0 14px; }
+.today-meals-table { border-top: 1px solid #e5e8df; }
+.today-meals-row { align-items: center; border-bottom: 1px solid #e5e8df; display: grid; gap: 10px; grid-template-columns: 52px minmax(0, 1fr) 52px 76px; min-height: 48px; }
+.today-meals-row strong { color: #315b3c; font-size: .86rem; }
+.today-meals-row span { color: #59675f; font-size: .84rem; }
+.today-meals-row .empty { color: #929d96; grid-column: 2 / -1; }
+@media (max-width: 520px) { .today-meals-row { grid-template-columns: 46px minmax(0, 1fr) 70px; } .today-meals-row span:nth-of-type(2) { display: none; } }
