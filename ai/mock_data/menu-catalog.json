@@ -1,0 +1,46 @@
+{
+  "version": "1.0.0",
+  "tags": ["매운 음식", "기름진 음식", "유제품", "밀가루", "카페인", "자극 적음", "국물", "밥 중심"],
+  "menus": [
+    {
+      "id": "egg-porridge",
+      "name": "계란죽",
+      "tags": ["자극 적음", "밥 중심"],
+      "alternatives": ["야채죽", "흰죽"],
+      "orderTips": ["처음에는 소량 또는 보통 이하로 시작해보세요."],
+      "guideCategory": "gentle"
+    },
+    {
+      "id": "clear-gukbap",
+      "name": "맑은 국밥",
+      "tags": ["자극 적음", "국물", "밥 중심"],
+      "alternatives": ["닭곰탕", "맑은 소고기국"],
+      "orderTips": ["다대기와 매운 양념은 따로 요청해 양을 조절해보세요."],
+      "guideCategory": "gentle"
+    },
+    {
+      "id": "bibimbap",
+      "name": "비빔밥",
+      "tags": ["밥 중심", "매운 음식"],
+      "alternatives": ["나물비빔밥", "계란 비빔밥"],
+      "orderTips": ["고추장은 따로 받아 적은 양부터 조절해보세요."],
+      "guideCategory": "adjustable"
+    },
+    {
+      "id": "kimchi-jjigae",
+      "name": "김치찌개",
+      "tags": ["매운 음식", "기름진 음식", "국물"],
+      "alternatives": ["된장국", "맑은 소고기국", "계란죽"],
+      "orderTips": ["매운 양념과 기름진 고명은 적게 요청하는 방법이 있어요."],
+      "guideCategory": "spicy"
+    },
+    {
+      "id": "cream-pasta",
+      "name": "크림 파스타",
+      "tags": ["유제품", "밀가루", "기름진 음식"],
+      "alternatives": ["토마토 파스타", "오일 파스타(소량)"],
+      "orderTips": ["소스를 적게 요청하거나 다른 메뉴와 나눠 먹어보세요."],
+      "guideCategory": "rich"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "disclaimer": "이 가이드는 의료적 진단이나 치료를 대체하지 않으며, 식사 선택을 위한 참고 정보입니다.",
+  "scenarios": [
+    {
+      "scheduleTypes": ["시험", "면접", "발표"],
+      "condition": "많이 예민함",
+      "headline": "중요한 일정 전에는 익숙하고 자극이 적은 구성을 우선 고려해보세요.",
+      "recommendedMenuIds": ["egg-porridge", "clear-gukbap", "bibimbap"],
+      "portionTip": "평소보다 적은 양 또는 보통 이하로 시작해보세요.",
+      "generalEvidence": "중요한 일정 전에는 새로운 메뉴보다 평소 익숙한 식사 구성이 부담을 줄이는 데 도움이 될 수 있어요."
+    },
+    {
+      "scheduleTypes": ["시험", "면접", "발표", "출근", "약속", "여행"],
+      "condition": "조금 예민함",
+      "headline": "오늘은 양과 양념을 조절할 수 있는 메뉴를 선택해보세요.",
+      "recommendedMenuIds": ["clear-gukbap", "bibimbap", "egg-porridge"],
+      "portionTip": "양념은 따로 받고, 익숙한 양으로 천천히 드셔보세요.",
+      "generalEvidence": "메뉴를 완전히 제한하기보다 양과 양념을 조절하는 선택지가 있어요."
+    },
+    {
+      "scheduleTypes": ["시험", "면접", "발표", "출근", "약속", "여행"],
+      "condition": "괜찮음",
+      "headline": "평소 편안했던 식사 경험을 우선 참고해보세요.",
+      "recommendedMenuIds": ["bibimbap", "clear-gukbap", "egg-porridge"],
+      "portionTip": "평소의 익숙한 섭취량을 기준으로 선택해보세요.",
+      "generalEvidence": "기록이 쌓이면 내게 편안했던 메뉴와 양을 더 구체적으로 보여드릴 수 있어요."
+    }
+  ]
+}

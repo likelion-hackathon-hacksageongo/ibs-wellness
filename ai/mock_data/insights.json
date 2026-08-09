@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "minimumRecordCount": 3,
+  "insights": [
+    {
+      "id": "spicy-food-pattern",
+      "category": "food_tag",
+      "title": "매운 음식이 포함된 식사 후 불편함이 자주 기록됐어요.",
+      "description": "최근 매운 음식 태그가 포함된 식사 5회 중 4회에서 불편함이 기록됐어요.",
+      "evidence": "최근 30일 식사 기록 기준"
+    },
+    {
+      "id": "small-portion-pattern",
+      "category": "portion",
+      "title": "소량 섭취에서 상대적으로 편안함이 자주 기록됐어요.",
+      "description": "소량 섭취 기록 4회 중 3회에서 편안함이 기록됐어요.",
+      "evidence": "최근 30일 식사 기록 기준"
+    }
+  ]
+}

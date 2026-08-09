@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Schedule guide response",
+  "type": "object",
+  "required": ["headline", "recommendations", "portionTip", "evidence", "disclaimer"],
+  "properties": {
+    "headline": { "type": "string" },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["menuId", "name", "orderTips"],
+        "properties": {
+          "menuId": { "type": "string" },
+          "name": { "type": "string" },
+          "orderTips": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "portionTip": { "type": "string" },
+    "evidence": { "type": "object", "required": ["type", "message"], "properties": { "type": { "enum": ["personal_record", "general_mock_guide"] }, "message": { "type": "string" } } },
+    "disclaimer": { "type": "string" }
+  }
+}
