@@ -13,3 +13,7 @@ class GuideResponseSerializer(serializers.Serializer):
     portion_tip = serializers.CharField()
     evidence = serializers.DictField()
     disclaimer = serializers.CharField()
+
+
+class GuideFeedbackSerializer(serializers.Serializer):
+    rating = serializers.ChoiceField(choices=["helpful", "not_relevant", "other_menu"])

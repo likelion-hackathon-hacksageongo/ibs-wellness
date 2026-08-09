@@ -28,3 +28,9 @@ export async function createScheduleGuide(payload) {
   if (!response.ok) throw new Error('식사 가이드를 만들지 못했어요.')
   return response.json()
 }
+
+export async function sendGuideFeedback(rating) {
+  const response = await fetch(`${API_URL}/guides/feedback/`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ rating }) })
+  if (!response.ok) throw new Error('피드백을 저장하지 못했어요.')
+  return response.json()
+}
