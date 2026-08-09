@@ -13,6 +13,8 @@ import "./guide.css";
 import "./home.css";
 import "./onboarding.css";
 import AppNavigation from "./components/AppNavigation";
+import MealsPage from "./pages/MealsPage";
+import { useLocation } from "react-router-dom";
 
 const tags = [
   "매운 음식",
@@ -48,6 +50,7 @@ const localNow = () => {
 const label = (options, value) => options.find((x) => x[0] === value)?.[1];
 
 export default function App() {
+  const location = useLocation();
   const [records, setRecords] = useState([]),
     [insights, setInsights] = useState(),
     [guide, setGuide] = useState(),
@@ -83,7 +86,7 @@ export default function App() {
     getMealRecords().then(setRecords);
     getInsights().then(setInsights);
   };
-  useEffect(load, []);
+  useEffect(() => { load(); }, []);
   const toggle = (key, value, setter) =>
     setter((v) => ({
       ...v,
@@ -154,6 +157,9 @@ export default function App() {
     } catch (e) {
       setMessage(e.message);
     }
+  }
+  if (location.pathname === "/meals") {
+    return <><AppNavigation /><MealsPage /></>;
   }
   return (
     <main className="page-shell">
