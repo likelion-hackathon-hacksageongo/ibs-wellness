@@ -12,6 +12,7 @@ import {
 import "./guide.css";
 import "./home.css";
 import "./onboarding.css";
+import AppNavigation from "./components/AppNavigation";
 
 const tags = [
   "매운 음식",
@@ -54,7 +55,8 @@ export default function App() {
     [saving, setSaving] = useState(false),
     [selected, setSelected] = useState(),
     [feedback, setFeedback] = useState(),
-    [editingMeal, setEditingMeal] = useState();
+    [editingMeal, setEditingMeal] = useState(),
+    [activeView, setActiveView] = useState("home");
   const [meal, setMeal] = useState({
     menu_name: "",
     meal_type: "lunch",
@@ -164,6 +166,7 @@ export default function App() {
         </h1>
         <p>기록을 바탕으로 다음 선택을 더 편하게 도와드릴게요.</p>
       </header>
+      <AppNavigation />
       <section className="home-summary" aria-label="오늘의 기록 요약">
         <div>
           <span>오늘 식사 기록</span>
