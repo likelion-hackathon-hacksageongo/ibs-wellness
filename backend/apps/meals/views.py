@@ -13,6 +13,12 @@ class MealRecordListCreateView(generics.ListCreateAPIView):
     serializer_class = MealRecordSerializer
 
 
+@extend_schema(tags=["Meals"], summary="식사 기록 조회·수정·삭제")
+class MealRecordDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = MealRecord.objects.select_related("condition")
+    serializer_class = MealRecordSerializer
+
+
 @extend_schema(tags=["Meals"], summary="식후 상태 생성 또는 수정", request=ConditionRecordSerializer, responses=ConditionRecordSerializer)
 class ConditionRecordCreateUpdateView(APIView):
     def post(self, request, meal_id):

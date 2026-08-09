@@ -11,6 +11,17 @@ export async function createMealRecord(payload) {
   return response.json()
 }
 
+export async function updateMealRecord(id, payload) {
+  const response = await fetch(`${API_URL}/meals/${id}/`, { method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) })
+  if (!response.ok) throw new Error('식사 기록을 수정하지 못했어요.')
+  return response.json()
+}
+
+export async function deleteMealRecord(id) {
+  const response = await fetch(`${API_URL}/meals/${id}/`, { method: 'DELETE' })
+  if (!response.ok) throw new Error('식사 기록을 삭제하지 못했어요.')
+}
+
 export async function saveConditionRecord(mealId, payload) {
   const response = await fetch(`${API_URL}/meals/${mealId}/condition/`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) })
   if (!response.ok) throw new Error('식후 상태를 저장하지 못했어요.')

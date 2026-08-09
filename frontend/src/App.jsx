@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import {
   createMealRecord,
   createScheduleGuide,
+  deleteMealRecord,
   getInsights,
   getMealRecords,
   saveConditionRecord,
   sendGuideFeedback,
+  updateMealRecord,
 } from "./services/meals";
 import "./guide.css";
 import "./home.css";
@@ -51,7 +53,8 @@ export default function App() {
     [message, setMessage] = useState(""),
     [saving, setSaving] = useState(false),
     [selected, setSelected] = useState(),
-    [feedback, setFeedback] = useState();
+    [feedback, setFeedback] = useState(),
+    [editingMeal, setEditingMeal] = useState();
   const [meal, setMeal] = useState({
     menu_name: "",
     meal_type: "lunch",
@@ -90,18 +93,31 @@ export default function App() {
     e.preventDefault();
     setSaving(true);
     try {
-      await createMealRecord({
+      const payload = {
         ...meal,
         meal_time: new Date(meal.meal_time).toISOString(),
-      });
-      setMeal({ ...meal, menu_name: "", meal_time: localNow(), tags: [] });
-      setMessage("식사 기록을 저장했어요.");
+      };
+      if (editingMeal) await updateMealRecord(editingMeal.id, payload);
+      else await createMealRecord(payload);
+      setMeal({ menu_name: "", meal_type: "lunch", portion_size: "medium", meal_time: localNow(), tags: [], note: "" });
+      setMessage(editingMeal ? "식사 기록을 수정했어요." : "식사 기록을 저장했어요.");
+      setEditingMeal();
       load();
     } catch (e) {
       setMessage(e.message);
     } finally {
       setSaving(false);
     }
+  }
+  function editMeal(record) {
+    const date = new Date(record.meal_time);
+    setEditingMeal(record);
+    setMeal({ ...record, meal_time: new Date(date - date.getTimezoneOffset() * 60000).toISOString().slice(0, 16) });
+    document.getElementById("meal-record")?.scrollIntoView({ behavior: "smooth" });
+  }
+  async function removeMeal(record) {
+    if (!window.confirm(`'${record.menu_name}' 기록을 삭제할까요?`)) return;
+    try { await deleteMealRecord(record.id); setMessage("식사 기록을 삭제했어요."); load(); } catch (e) { setMessage(e.message); }
   }
   async function submitCondition(e) {
     e.preventDefault();
@@ -295,7 +311,7 @@ export default function App() {
       <section className="card" id="meal-record">
         <div className="section-heading">
           <span>기록</span>
-          <h2>식사 기록</h2>
+          <h2>{editingMeal ? "식사 기록 수정" : "식사 기록"}</h2>
         </div>
         <form onSubmit={submitMeal}>
           <label>
@@ -345,9 +361,8 @@ export default function App() {
               </button>
             ))}
           </div>
-          <button className="submit-button" disabled={saving}>
-            식사 기록 저장하기
-          </button>
+          <button className="submit-button" disabled={saving}>{editingMeal ? "수정 내용 저장하기" : "식사 기록 저장하기"}</button>
+          {editingMeal && <button type="button" className="text-button" onClick={() => { setEditingMeal(); setMeal({ menu_name: "", meal_type: "lunch", portion_size: "medium", meal_time: localNow(), tags: [], note: "" }); }}>수정 취소</button>}
         </form>
       </section>
       <section className="card records">
@@ -371,6 +386,8 @@ export default function App() {
               >
                 {r.condition ? "상태 수정" : "상태 기록"}
               </button>
+              <button className="text-button" onClick={() => editMeal(r)}>식사 수정</button>
+              <button className="text-button" onClick={() => removeMeal(r)}>삭제</button>
             </li>
           ))}
         </ul>
