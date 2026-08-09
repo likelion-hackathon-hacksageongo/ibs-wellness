@@ -1,0 +1,24 @@
+.home-summary {
+  align-items: stretch;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 0 18px;
+}
+
+.home-summary > div,
+.home-summary > a {
+  background: #e8f2e4;
+  border-radius: 14px;
+  color: #315b3c;
+  display: grid;
+  min-height: 86px;
+  padding: 15px;
+  text-decoration: none;
+}
+
+.home-summary span { font-size: .78rem; font-weight: 700; }
+.home-summary strong { align-self: end; font-size: 1.3rem; }
+.home-summary > a { background: #315b3c; color: white; font-size: .9rem; font-weight: 800; place-items: center; }
+
+@media (max-width: 520px) { .home-summary { grid-template-columns: 1fr; } .home-summary > a { min-height: 48px; } }

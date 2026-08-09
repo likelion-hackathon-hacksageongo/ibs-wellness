@@ -8,6 +8,7 @@ import {
   sendGuideFeedback,
 } from "./services/meals";
 import "./guide.css";
+import "./home.css";
 
 const tags = [
   "매운 음식",
@@ -69,6 +70,9 @@ export default function App() {
     current_condition: "조금 예민함",
     dining_context: "외식",
   });
+  const today = new Date().toDateString();
+  const todayMealCount = records.filter((record) => new Date(record.meal_time).toDateString() === today).length;
+  const completedConditionCount = records.filter((record) => record.condition).length;
   const load = () => {
     getMealRecords().then(setRecords);
     getInsights().then(setInsights);
@@ -143,7 +147,19 @@ export default function App() {
         </h1>
         <p>기록을 바탕으로 다음 선택을 더 편하게 도와드릴게요.</p>
       </header>
-      <section className="card">
+      <section className="home-summary" aria-label="오늘의 기록 요약">
+        <div>
+          <span>오늘 식사 기록</span>
+          <strong>{todayMealCount}회</strong>
+        </div>
+        <div>
+          <span>식후 상태 기록</span>
+          <strong>{completedConditionCount}회</strong>
+        </div>
+        <a href="#guide">일정 전 가이드 보기</a>
+        <a href="#meal-record">식사 기록하기</a>
+      </section>
+      <section className="card" id="guide">
         <div className="section-heading">
           <span>가이드</span>
           <h2>중요한 일정 전 식사</h2>
@@ -263,7 +279,7 @@ export default function App() {
           ))
         )}
       </section>
-      <section className="card">
+      <section className="card" id="meal-record">
         <div className="section-heading">
           <span>기록</span>
           <h2>식사 기록</h2>
