@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import "./AppNavigation.css";
 const items = [["/", "홈"], ["/meals", "기록"], ["/insights", "분석"], ["/guide", "가이드"]];
 
 export default function AppNavigation() {
