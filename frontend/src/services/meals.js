@@ -16,3 +16,9 @@ export async function saveConditionRecord(mealId, payload) {
   if (!response.ok) throw new Error('식후 상태를 저장하지 못했어요.')
   return response.json()
 }
+
+export async function getInsights() {
+  const response = await fetch(`${API_URL}/insights/`)
+  if (!response.ok) throw new Error('패턴 분석을 불러오지 못했어요.')
+  return response.json()
+}
