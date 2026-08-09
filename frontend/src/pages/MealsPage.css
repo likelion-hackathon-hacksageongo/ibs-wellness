@@ -5,4 +5,11 @@
 .today-meals-row strong { color: #315b3c; font-size: .86rem; }
 .today-meals-row span { color: #59675f; font-size: .84rem; }
 .today-meals-row .empty { color: #929d96; grid-column: 2 / -1; }
+.today-meal-actions { display: flex; gap: 6px; grid-column: 2 / -1; padding: 0 0 10px; }
+.today-meal-actions button { align-items: center; background: #fff; border: 1px solid #d9ddd5; border-radius: 999px; color: #52755e; display: inline-flex; font-size: .74rem; font-weight: 800; justify-content: center; min-height: 28px; padding: 5px 9px; white-space: nowrap; }
+.today-meal-actions button:hover { background: #e5f0df; border-color: #6b9675; color: #315b3c; }
 @media (max-width: 520px) { .today-meals-row { grid-template-columns: 46px minmax(0, 1fr) 70px; } .today-meals-row span:nth-of-type(2) { display: none; } }
+.calendar-history { background: #fffefa; border: 1px solid #e4e5db; border-radius: 20px; margin-top: 22px; padding: 20px; }
+.calendar-header { align-items: center; display: flex; justify-content: space-between; }.calendar-header h2 { font-size: 1rem; }.calendar-header button { background: transparent; border: 0; color: #315b3c; font-size: 1.4rem; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }.calendar-grid span, .calendar-grid button { min-height: 34px; padding: 6px; }.weekdays { color: #89948d; font-size: .72rem; }.calendar-grid button { background: transparent; border: 0; border-radius: 50%; color: #536158; }.calendar-grid button.has-record { background: #e5f0df; color: #315b3c; font-weight: 800; }
+.selected-date-records { border-top: 1px solid #e5e8df; margin-top: 16px; padding-top: 14px; }.selected-date-records h2 { font-size: .95rem; }.selected-date-records ul { list-style: none; padding: 0; }.selected-date-records li { display: flex; justify-content: space-between; padding: 8px 0; }.selected-date-records span { color: #6b766f; font-size: .85rem; }

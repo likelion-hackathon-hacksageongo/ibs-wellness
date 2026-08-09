@@ -7,6 +7,7 @@ import {
   updateMealRecord,
 } from "../services/meals";
 import TodayMealsTable from "../components/TodayMealsTable";
+import MealCalendar from "../components/MealCalendar";
 import "./MealsPage.css";
 
 const types = [
@@ -45,7 +46,8 @@ const now = () => {
 export default function MealsPage() {
   const [records, setRecords] = useState([]),
     [editing, setEditing] = useState(),
-    [selected, setSelected] = useState();
+    [selected, setSelected] = useState(),
+    [selectedDate, setSelectedDate] = useState();
   const [meal, setMeal] = useState({
     menu_name: "",
     meal_type: "lunch",
@@ -112,9 +114,10 @@ export default function MealsPage() {
     setSelected();
     load();
   }
+  const selectedDateRecords = selectedDate ? records.filter((record) => new Date(record.meal_time).toDateString() === selectedDate.toDateString()) : [];
   return (
     <main className="page-shell">
-      <TodayMealsTable records={records} />
+      <TodayMealsTable records={records} onEdit={startEdit} onDelete={remove} onCondition={(record) => { setSelected(record); setCondition(record.condition ?? condition); }} />
       <h1>{editing ? "식사 기록 수정" : "식사 기록"}</h1>
       <form onSubmit={submit}>
         <input
@@ -169,32 +172,9 @@ export default function MealsPage() {
           </button>
         )}
       </form>
-      <section className="records">
-        <h2>최근 식사</h2>
-        <ul>
-          {records.map((record) => (
-            <li key={record.id}>
-              <strong>{record.menu_name}</strong>
-              <p>
-                {record.condition
-                  ? comforts.find(
-                      (item) => item[0] === record.condition.comfort_level,
-                    )?.[1]
-                  : "식후 상태 미기록"}
-              </p>
-              <button onClick={() => startEdit(record)}>수정</button>
-              <button onClick={() => remove(record)}>삭제</button>
-              <button
-                onClick={() => {
-                  setSelected(record);
-                  setCondition(record.condition ?? condition);
-                }}
-              >
-                식후 상태
-              </button>
-            </li>
-          ))}
-        </ul>
+      <section className="records calendar-history">
+        <MealCalendar records={records} onSelectDate={setSelectedDate} />
+        {selectedDate && <div className="selected-date-records"><h2>{selectedDate.toLocaleDateString("ko-KR", { month: "long", day: "numeric" })} 기록</h2>{selectedDateRecords.length ? <ul>{selectedDateRecords.map((record) => <li key={record.id}><strong>{record.menu_name}</strong><span>{types.find((item) => item[0] === record.meal_type)?.[1]}</span></li>)}</ul> : <p>이 날은 식사 기록이 없어요.</p>}</div>}
       </section>
       {selected && (
         <form onSubmit={saveCondition}>

@@ -12,7 +12,7 @@ const comfortLabels = {
   very_uncomfortable: "많이 불편함",
 };
 
-export default function TodayMealsTable({ records }) {
+export default function TodayMealsTable({ records, onEdit, onDelete, onCondition }) {
   const today = new Date().toDateString();
   const todayRecords = records.filter(
     (record) => new Date(record.meal_time).toDateString() === today,
@@ -36,6 +36,11 @@ export default function TodayMealsTable({ records }) {
                       ? comfortLabels[record.condition.comfort_level]
                       : "상태 미기록"}
                   </span>
+                  <div className="today-meal-actions">
+                    <button type="button" onClick={() => onEdit(record)}>수정</button>
+                    <button type="button" onClick={() => onDelete(record)}>삭제</button>
+                    <button type="button" onClick={() => onCondition(record)}>{record.condition ? "상태 수정" : "상태 기록"}</button>
+                  </div>
                 </>
               ) : (
                 <span className="empty" role="cell">
